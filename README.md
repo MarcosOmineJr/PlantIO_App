@@ -1,0 +1,1 @@
+Aplicativo do Projeto Plant IO da disciplina Projeto Interdisciplinar: Mobilidade do 6º Semestre do curso de Design Digital da Universidade Anhembi Morumbi
