@@ -1,5 +1,4 @@
-
-
+import * as Expo from 'expo';
 
 /* --- COLOR THEME DEFINITION --- */
 
@@ -10,23 +9,23 @@ let season;
 const Themes = {
     summer:{
         main:'#F1CD33',
-        accent:'#C27E0A',
-        white: '#FFFFFF'
+        accent:(o=1)=>{return `rgba(194, 126, 10, ${o})`},
+        text: '#FFFFFF'
     },
     fall:{
         main:'#9B5632',
-        accent:'#382419',
-        white: '#FFFFFF'
+        accent:(o=1)=>{return `rgba(56, 36, 25, ${o})`},
+        text: '#FFFFFF'
     },
     winter:{
         main:'#6485C7',
-        accent:'#293F6E',
-        white: '#FFFFFF'
+        accent:(o=1)=>{return `rgba(41, 63, 110, ${o})`},
+        text: '#FFFFFF'
     },
     spring:{
         main:'#9ABB41',
-        accent:'#314E30',
-        white: '#FFFFFF'
+        accent:(o=1)=>{return `rgba(49, 78, 48, ${o})`},
+        text: '#FFFFFF'
     }
 }
 
@@ -161,9 +160,19 @@ export const Palette = determineTheme(season, Themes);
 /* --- END OF COLOR THEME DEFINITION --- */
 
 
-
 //General styles of the app, divided by components and using the correct theme:
 let generalStyles = {
+    signIn:{
+        container:{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: Palette.main
+        },
+        button:{
+
+        }
+    },
     signUp:{
         container:{
             flex: 1,

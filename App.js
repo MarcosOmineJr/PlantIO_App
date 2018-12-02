@@ -1,10 +1,9 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
 
-import SignUp from './src/SignUp.js';
+import { AsyncSetup } from './src/CustomComponents/AsyncSetup';
 
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
-    return <SignUp />
+    return <AsyncSetup />
   }
 }
