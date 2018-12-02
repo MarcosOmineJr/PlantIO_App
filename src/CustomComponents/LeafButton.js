@@ -19,18 +19,18 @@ export class LeafButton extends Component {
             styles: StyleSheet.create({
                 container:{
                     width: width*this.props.widthMultiplier,
-                    height: height*0.07,
+                    height: height*0.06,
                     justifyContent: 'center',
                     alignItems: 'center',
                     backgroundColor: bgc,
-                    borderTopLeftRadius: height*0.035,
-                    borderBottomRightRadius: height*0.035
+                    borderTopLeftRadius: height*0.03,
+                    borderBottomRightRadius: height*0.03
                 },
                 txt:{
                     color: Palette.text,
                     fontFamily: 'comfortaa',
-                    fontSize: width*0.055,
-                    lineHeight: width*0.06
+                    fontSize: width*0.045,
+                    marginTop: -(width*0.01)
                 }
             })
         };
@@ -38,7 +38,7 @@ export class LeafButton extends Component {
 
     render(){
         return (
-            <TouchableHighlight underlayColor={Palette.accent(0.3)} style={this.state.styles.container} onPress={this.props.onPress} >
+            <TouchableHighlight underlayColor={Palette.accent(0.3)} style={[this.state.styles.container, this.props.style]} onPress={this.props.onPress} >
                 <Text style={this.state.styles.txt}>{this.props.label}</Text>
             </TouchableHighlight>
         );

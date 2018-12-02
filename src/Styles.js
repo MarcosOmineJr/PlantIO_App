@@ -1,4 +1,7 @@
-import * as Expo from 'expo';
+import { Dimensions } from 'react-native';
+
+const { width, height } = Dimensions.get('screen');
+
 
 /* --- COLOR THEME DEFINITION --- */
 
@@ -176,9 +179,54 @@ let generalStyles = {
     signUp:{
         container:{
             flex: 1,
-            justifyContent: 'center',
+            justifyContent: 'flex-start',
+            backgroundColor: Palette.main
+        },
+        formContainer:{
+            width:'100%',
+            height:'80%',
             alignItems: 'center',
             backgroundColor: Palette.main
+        },
+        loginBtn:{
+            marginTop: height*0.05,
+            marginBottom: height*0.02
+        },
+        horizontalInput:{
+            width: '90%',
+            flexDirection: 'row',
+            marginBottom: height*0.02,
+        },
+        hiInput:{
+            width: '69%',
+            height: height*0.06,
+            backgroundColor: Palette.text,
+            marginLeft: width*0.05,
+            borderRadius: width*0.01,
+            paddingHorizontal: 10,
+            fontSize: 20,
+            color: Palette.accent()
+        },
+        verticalInput:{
+            width: '90%',
+            flexDirection: 'column',
+            marginBottom: height*0.02
+        },
+        label:{
+            marginBottom: height*0.02
+        },
+        normalInput:{
+            width: '100%',
+            height: height*0.06,
+            backgroundColor: Palette.text,
+            borderRadius: width*0.01,
+            paddingHorizontal: 10,
+            fontSize: 20,
+            color: Palette.accent()
+        },
+        signUpBtn:{
+            alignSelf: 'flex-end',
+            marginRight: width*0.05
         }
     }
 };
