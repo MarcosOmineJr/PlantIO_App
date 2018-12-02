@@ -1,33 +1,43 @@
 import React, { Component } from 'react';
 import {
+    Dimensions,
     View,
     Text
 } from 'react-native';
-import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
+import { createStackNavigator, createDrawerNavigator, createAppContainer } from 'react-navigation';
 
-export const signedOutRoutes = createStackNavigator({
+import { Palette } from '../src/Styles';
+
+import SignUp from '../src/SignUp';
+import Login from '../src/Login';
+
+const { height } = Dimensions.get('screen');
+
+const SignedOutRoutes = createStackNavigator({
+    SignUp:{
+        screen:SignUp
+    },
     Login:{
-        screen:Login,
-        
+        screen:Login
     }
 },{
     defaultNavigationOptions:{
-        headerleft: ()=>{return null},
-        headerTitle: ()=>{return <Icon />},
-        headerRight: ()=>{return null}
+        header: ()=>{return <Icon />}
     }
 });
 
-export const signedInRoutes = createDrawerNavigator({
-    Modal:Modal,
-    Drawer:Drawer
-});
+export const SignedOutContainer = createAppContainer(SignedOutRoutes);
+
+/* export const signedInRoutes = createDrawerNavigator({
+    Drawer:Drawer,
+    Modal:Modal
+}); */
 
 class Icon extends Component {
     render(){
         return (
-            <View style={{flex:1, alignItems:'center', justifyContent:'center'}}>
-                <Text style={{color:'#fff', fontWeight:'bold'}}>Imagenzinha</Text>
+            <View style={{backgroundColor: Palette.main, height: height*0.07, alignItems:'center', justifyContent:'center'}}>
+                <Text style={{color:Palette.text, fontWeight:'bold'}}>Imagenzinha</Text>
             </View>
         );
     }

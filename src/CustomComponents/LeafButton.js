@@ -10,7 +10,7 @@ import { Palette } from '../Styles';
 
 const { width, height } = Dimensions.get('screen');
 
-export class LeafButton extends Component {
+export default class LeafButton extends Component {
     constructor(props){
         super(props);
         this.bgc;

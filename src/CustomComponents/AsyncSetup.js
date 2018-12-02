@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as Expo from 'expo';
 
-import SignUp from '../SignUp';
+import { SignedOutContainer } from '../../routes/routes';
 
 export class AsyncSetup extends Component {
     constructor(props){
@@ -28,7 +28,7 @@ export class AsyncSetup extends Component {
         if (!this.state.isReady){
             return <Expo.AppLoading />
         } else {
-            return <SignUp/> //provisório
+            return <SignedOutContainer /> //provisório
         }
     }
 }

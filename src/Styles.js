@@ -165,15 +165,40 @@ export const Palette = determineTheme(season, Themes);
 
 //General styles of the app, divided by components and using the correct theme:
 let generalStyles = {
-    signIn:{
+    login:{
         container:{
             flex: 1,
             justifyContent: 'center',
+            backgroundColor: Palette.main
+        },
+        formContainer:{
+            width:'100%',
+            height:'80%',
             alignItems: 'center',
             backgroundColor: Palette.main
         },
-        button:{
-
+        signUpBtn:{
+            marginTop: height*0.05,
+            marginBottom: height*0.1
+        },
+        horizontalInput:{
+            width: '90%',
+            flexDirection: 'row',
+            marginBottom: height*0.1,
+        },
+        hiInput:{
+            width: '69%',
+            height: height*0.06,
+            backgroundColor: Palette.text,
+            marginLeft: width*0.05,
+            borderRadius: width*0.01,
+            paddingHorizontal: 10,
+            fontSize: 20,
+            color: Palette.accent()
+        },
+        loginBtn:{
+            alignSelf: 'flex-end',
+            marginRight: width*0.05
         }
     },
     signUp:{

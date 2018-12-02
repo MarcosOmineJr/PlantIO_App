@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import generalStyles from './Styles';
-import { LeafButton } from './CustomComponents/LeafButton';
+import LeafButton from './CustomComponents/LeafButton';
 
 const styles = StyleSheet.create(generalStyles.signUp);
 const { height } = Dimensions.get('screen');
@@ -17,7 +17,7 @@ export default class SignUp extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.formContainer}>
-                    <LeafButton style={styles.loginBtn} label='Já tem conta? Entre Aqui' widthMultiplier={0.9} onPress={()=>alert('Pressionou ir para LogIn')} />
+                    <LeafButton style={styles.loginBtn} label='Já tem conta? Entre Aqui' widthMultiplier={0.9} onPress={()=>this.props.navigation.navigate('Login')} />
                     <View style={styles.horizontalInput}>
                         <LeafButton label='E-Mail' widthMultiplier={0.23} useOpacity={true} />
                         <TextInput style={styles.hiInput} textContentType='emailAddress' keyboardType='email-address' underlineColorAndroid='transparent' />
