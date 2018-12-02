@@ -1,15 +1,15 @@
 import { createBottomTabNavigator } from 'react-navigation';
 
 
-import ModulesScreen from '../src/ModulesScreen';
+import Modules from './modules';
 import HintsScreen from '../src/HintsScreen';
 import NewsScreen from '../src/NewsScreen';
 import CommunityScreen from '../src/CommunityScreen';
 
 
 const TabNavigator = createBottomTabNavigator({
-    ModulesScreen:{
-        screen: ModulesScreen,
+    Modules:{
+        screen: Modules,
         navigationOptions:{
             tabBarLabel: 'Módulos',
             tabBarIcon: null //Mudar depois

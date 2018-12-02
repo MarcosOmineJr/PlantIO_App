@@ -18,8 +18,10 @@ export default class LateralMenu extends Component {
     render(){
         return (
             <View style={styles.menuContentContainer}>
-                <View style={styles.exitBtnContainer}>
-                
+                <View style={styles.closeBtnContainer}>
+                    <TouchableHighlight style={styles.logOutBtn} onPress={()=>onSignOut().then(this.props.navigation.closeDrawer())}>
+                        <Text style={styles.closeBtnText}>Fechar</Text>
+                    </TouchableHighlight>
                 </View>
                 <View style={styles.userContainer}>
                     <TouchableHighlight style={styles.logOutBtn} onPress={()=>onSignOut().then(this.props.navigation.navigate('SignedOut'))}>
@@ -41,13 +43,18 @@ const styles = StyleSheet.create({
     menuContentContainer:{
         flex:1
     },
-    exitBtnContainer:{
+    closeBtnContainer:{
         flex:1,
         flexDirection: 'row',
         justifyContent: 'flex-end',
         alignItems: 'center',
         paddingRight: width*0.05,
         backgroundColor: Palette.main
+    },
+    closeBtnText:{
+        color: Palette.accent(),
+        fontFamily: 'comfortaa',
+        fontSize: 15
     },
     userContainer:{
         flex:1,

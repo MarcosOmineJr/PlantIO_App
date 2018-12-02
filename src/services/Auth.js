@@ -5,10 +5,10 @@ import { AsyncStorage } from 'react-native';
 export const TOKEN_KEY = '@PlantIO:token';
 
 
-export const onSignIn = ()=>AsyncStorage.setItem(TOKEN_KEY, 'true');
+export const onSignIn = async ()=> await AsyncStorage.setItem(TOKEN_KEY, 'true');
 
 
-export const onSignOut = ()=>AsyncStorage.removeItem(TOKEN_KEY);
+export const onSignOut = async ()=> await AsyncStorage.removeItem(TOKEN_KEY);
 
 
 export const checkSession = async ()=>{

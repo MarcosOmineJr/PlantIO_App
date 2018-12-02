@@ -257,6 +257,45 @@ let generalStyles = {
             marginRight: width*0.05
         }
     },
+    addModule:{
+        container:{
+            flex: 1,
+            justifyContent: 'center',
+            backgroundColor: Palette.main
+        },
+        formContainer:{
+            width:'100%',
+            height:'100%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: Palette.main
+        },
+        label:{
+            marginBottom: height*0.02
+        },
+        signUpBtn:{
+            marginTop: height*0.2,
+            marginBottom: height*0.02
+        },
+        verticalInput:{
+            width: '90%',
+            flexDirection: 'column',
+            marginBottom: height*0.02
+        },
+        normalInput:{
+            width: '100%',
+            height: height*0.06,
+            backgroundColor: Palette.text,
+            borderRadius: width*0.01,
+            paddingHorizontal: 10,
+            fontSize: 20,
+            color: Palette.accent()
+        },
+        addBtn:{
+            alignSelf: 'flex-end',
+            marginRight: width*0.05
+        }
+    },
     modulesScreen:{
         container:{
             flex:1,

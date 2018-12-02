@@ -10,6 +10,7 @@ import generalStyles from './Styles';
 const styles = StyleSheet.create(generalStyles.modulesScreen);
 
 export default class ModulesScreen extends Component {
+    
     render(){
         return (
             <View style={styles.container}>

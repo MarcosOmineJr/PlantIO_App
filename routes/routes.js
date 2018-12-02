@@ -4,7 +4,7 @@ import {
     View,
     Text
 } from 'react-native';
-import { createStackNavigator, createDrawerNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 
 import { Palette } from '../src/Styles';
@@ -12,8 +12,8 @@ import { Palette } from '../src/Styles';
 
 import SignUp from '../src/SignUp';
 import Login from '../src/Login';
-import MainRoutes from './mainRoutes';
-import LateralMenu from '../src/CustomComponents/LateralMenu';
+import AddModule from '../src/AddModule'
+import Drawer from './drawer';
 
 
 const { height } = Dimensions.get('screen');
@@ -35,11 +35,22 @@ const SignedOutRoutes = createStackNavigator({
 
 
 //Routes in case the user is logged in:
-const SignedInRoutes = createDrawerNavigator({
-    MainRoutes:MainRoutes
+const SignedInRoutes = createStackNavigator({
+    Drawer:{
+        screen:Drawer,
+        navigationOptions:{
+            header: null
+        }
+    },
+    AddScreen:{
+        screen:AddModule,
+        navigationOptions:{
+            header: ()=>{return <Icon />}
+        }
+    }
 },
 {
-    contentComponent:LateralMenu
+    mode: 'modal'
 });
 
 

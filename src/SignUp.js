@@ -34,7 +34,7 @@ export default class SignUp extends Component {
                         <LeafButton style={styles.label} label='Nome do Módulo' widthMultiplier={0.5} useOpacity={true} />
                         <TextInput style={styles.normalInput} underlineColorAndroid='transparent' />
                     </View>
-                    <LeafButton style={styles.signUpBtn} label='Confirmar' widthMultiplier={0.3} onPress={()=>onSignIn().then(this.props.navigation.navigate('SignedIn'))} />
+                    <LeafButton style={styles.signUpBtn} label='Confirmar' widthMultiplier={0.3} onPress={()=> onSignIn().then(this.props.navigation.navigate('SignedIn'))} />
                     <LeafButton style={styles.loginBtn} label='Já tem conta? Entre Aqui' widthMultiplier={0.9} onPress={()=>this.props.navigation.navigate('Login')} />
                 </View>
             </View>
