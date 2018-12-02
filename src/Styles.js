@@ -165,42 +165,6 @@ export const Palette = determineTheme(season, Themes);
 
 //General styles of the app, divided by components and using the correct theme:
 let generalStyles = {
-    login:{
-        container:{
-            flex: 1,
-            justifyContent: 'center',
-            backgroundColor: Palette.main
-        },
-        formContainer:{
-            width:'100%',
-            height:'80%',
-            alignItems: 'center',
-            backgroundColor: Palette.main
-        },
-        signUpBtn:{
-            marginTop: height*0.05,
-            marginBottom: height*0.1
-        },
-        horizontalInput:{
-            width: '90%',
-            flexDirection: 'row',
-            marginBottom: height*0.1,
-        },
-        hiInput:{
-            width: '69%',
-            height: height*0.06,
-            backgroundColor: Palette.text,
-            marginLeft: width*0.05,
-            borderRadius: width*0.01,
-            paddingHorizontal: 10,
-            fontSize: 20,
-            color: Palette.accent()
-        },
-        loginBtn:{
-            alignSelf: 'flex-end',
-            marginRight: width*0.05
-        }
-    },
     signUp:{
         container:{
             flex: 1,
@@ -209,18 +173,20 @@ let generalStyles = {
         },
         formContainer:{
             width:'100%',
-            height:'80%',
+            height:'100%',
             alignItems: 'center',
-            backgroundColor: Palette.main
+            justifyContent: 'flex-end',
+            backgroundColor: Palette.main,
+            paddingTop: height*0.05,
         },
         loginBtn:{
-            marginTop: height*0.05,
-            marginBottom: height*0.02
+            marginTop: height*0.15,
+            marginBottom: height*0.02,
         },
         horizontalInput:{
             width: '90%',
             flexDirection: 'row',
-            marginBottom: height*0.02,
+            marginBottom: height*0.02
         },
         hiInput:{
             width: '69%',
@@ -252,6 +218,87 @@ let generalStyles = {
         signUpBtn:{
             alignSelf: 'flex-end',
             marginRight: width*0.05
+        }
+    },
+    login:{
+        container:{
+            flex: 1,
+            justifyContent: 'center',
+            backgroundColor: Palette.main
+        },
+        formContainer:{
+            width:'100%',
+            height:'100%',
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+            backgroundColor: Palette.main
+        },
+        signUpBtn:{
+            marginTop: height*0.2,
+            marginBottom: height*0.02
+        },
+        horizontalInput:{
+            width: '90%',
+            flexDirection: 'row',
+            marginBottom: height*0.1,
+        },
+        hiInput:{
+            width: '69%',
+            height: height*0.06,
+            backgroundColor: Palette.text,
+            marginLeft: width*0.05,
+            borderRadius: width*0.01,
+            paddingHorizontal: 10,
+            fontSize: 20,
+            color: Palette.accent()
+        },
+        loginBtn:{
+            alignSelf: 'flex-end',
+            marginRight: width*0.05
+        }
+    },
+    modulesScreen:{
+        container:{
+            flex:1,
+            justifyContent:'center',
+            alignItems:'center'
+        },
+        text:{
+            fontFamily: 'cabin',
+            fontSize: 50
+        }
+    },
+    hintsScreen:{
+        container:{
+            flex:1,
+            justifyContent:'center',
+            alignItems:'center'
+        },
+        text:{
+            fontFamily: 'cabin',
+            fontSize: 50
+        }
+    },
+    newsScreen:{
+        container:{
+            flex:1,
+            justifyContent:'center',
+            alignItems:'center'
+        },
+        text:{
+            fontFamily: 'cabin',
+            fontSize: 50
+        }
+    },
+    communityScreen:{
+        container:{
+            flex:1,
+            justifyContent:'center',
+            alignItems:'center'
+        },
+        text:{
+            fontFamily: 'cabin',
+            fontSize: 50
         }
     }
 };

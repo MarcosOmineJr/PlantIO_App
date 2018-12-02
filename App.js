@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import { AsyncSetup } from './src/CustomComponents/AsyncSetup';
+import { AsyncSetup } from './src/boot/AsyncSetup';
 
 export default class App extends Component {
   render() {
-    return <AsyncSetup />
+    return <AsyncSetup /> //Calls setup first
   }
 }
