@@ -1,23 +1,14 @@
-import React, { Component } from 'react';
-import {
-    Dimensions,
-    View,
-    Text
-} from 'react-native';
+import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-
-
-import { Palette } from '../src/Styles';
 
 
 import SignUp from '../src/SignUp';
 import Login from '../src/Login';
-import CustomIcon from '../src/CustomComponents/CustomIcon';
+import EmptyGreenHeader from '../src/CustomComponents/EmptyGreenHeader';
 import AddModule from '../src/AddModule'
 import Drawer from './drawer';
-
-
-const { height } = Dimensions.get('screen');
+import ModuleConfig from '../src/CustomComponents/ModuleConfig';
+import IconPicker from '../src/CustomComponents/IconPicker';
 
 
 //Routes in case the user is logged out:
@@ -30,7 +21,7 @@ const SignedOutRoutes = createStackNavigator({
     }
 },{
     defaultNavigationOptions:{
-        header: ()=>{return <Icon />} //Replaces the library default header with our custom header
+        header: ()=>{return <EmptyGreenHeader />} //Replaces the library default header with our custom header
     }
 });
 
@@ -46,7 +37,19 @@ const SignedInRoutes = createStackNavigator({
     AddScreen:{
         screen:AddModule,
         navigationOptions:{
-            header: ()=>{return <Icon />}
+            header: ()=>{return <EmptyGreenHeader />}
+        }
+    },
+    ModuleConfig:{
+        screen:ModuleConfig,
+        navigationOptions:{
+            header: ()=>{return <EmptyGreenHeader />}
+        }
+    },
+    IconPicker:{
+        screen:IconPicker,
+        navigationOptions:{
+            header: ()=>{return <EmptyGreenHeader />}
         }
     }
 },
@@ -76,18 +79,3 @@ export const createRootNavigator = (signed = false)=>{
 //react-navigation requires that all routes must be loaded into a container:
 export const SignedOutContainer = createAppContainer(SignedOutRoutes);
 export const SignedInContainer = createAppContainer(SignedInRoutes);
-
-
-
-
-
-//The component below is the image in the header:
-class Icon extends Component {
-    render(){
-        return (
-            <View style={{backgroundColor: Palette.main, height: height*0.07, alignItems:'center'}}>
-                <CustomIcon name="plant-io" size={40} color={Palette.text} />
-            </View>
-        );
-    }
-}

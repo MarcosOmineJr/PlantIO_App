@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
         backgroundColor: Palette.main,
         borderTopLeftRadius: width*0.01,
         borderTopRightRadius: width*0.01,
-        marginTop: height*0.041
+        marginTop: height*0.02
     },
     month:{
         flex: 1,

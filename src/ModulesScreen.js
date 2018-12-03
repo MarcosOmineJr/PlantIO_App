@@ -9,6 +9,7 @@ import {
 import generalStyles from './Styles';
 import ModuleCard from './CustomComponents/ModuleCard';
 import WeatherCard from './CustomComponents/WeatherCard';
+import InfoBar from './CustomComponents/InfoBar';
 
 
 const styles = StyleSheet.create(generalStyles.modulesScreen);
@@ -34,9 +35,10 @@ export default class ModulesScreen extends Component {
             <View style={styles.container}>
                 <FlatList contentContainerStyle={styles.modulesList}
                     data={this.state.list}
-                    renderItem={({item})=><ModuleCard data={item} />}
+                    renderItem={({item})=><ModuleCard data={item} navigation={this.props.navigation} />}
                 />
                 <WeatherCard />
+                <InfoBar text='Lista de módulos e Clima' />
             </View>
         );
     }

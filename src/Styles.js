@@ -306,6 +306,17 @@ let generalStyles = {
             borderRadius: width*0.01
         }
     },
+    moduleScreen:{
+        container:{
+            flex:1,
+            justifyContent:'center',
+            alignItems:'center'
+        },
+        text:{
+            fontFamily: 'cabin',
+            fontSize: 50
+        }
+    },
     hintsScreen:{
         container:{
             flex:1,
