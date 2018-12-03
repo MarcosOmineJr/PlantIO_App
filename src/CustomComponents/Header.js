@@ -10,6 +10,7 @@ import { Feather } from '@expo/vector-icons';
 
 
 import { Palette } from '../Styles';
+import CustomIcon from './CustomIcon';
 
 
 const { height, width } = Dimensions.get('screen');
@@ -35,7 +36,7 @@ class HeaderTitle extends Component {
                     <Text style={styles.HTTxt}>{this.props.title}</Text>
                 </View>
                 <View style={styles.HTIconContainer}>
-                    <Text>Imagenzinha</Text>
+                    <CustomIcon name="plant-io" size={40} color={Palette.main} />
                 </View>
                 <View style={styles.HTFillerContainer}></View>
             </View>
@@ -91,7 +92,8 @@ const styles = StyleSheet.create({
     },
     HTTxt:{
         color: Palette.main,
-        fontFamily: 'comfortaa'
+        fontFamily: 'comfortaa',
+        fontSize: height*0.02
     },
     HTIconContainer:{
         flex: 1,

@@ -22,7 +22,8 @@ export class AsyncSetup extends Component {
         //Pick the fonts from the project '"root"/assets/fonts/' folder and assign the names 'cabin' and 'confortaa' that can be used in 'fontFamily' style props:
         await Expo.Font.loadAsync({
             cabin: require('../../assets/fonts/Cabin-Regular.ttf'),
-            comfortaa: require('../../assets/fonts/Comfortaa-Bold.ttf')
+            comfortaa: require('../../assets/fonts/Comfortaa-Bold.ttf'),
+            PlantIO_Icons: require('../../assets/icons/pio-ui-icons.ttf')
         })
 
         //Check if user is logged in:

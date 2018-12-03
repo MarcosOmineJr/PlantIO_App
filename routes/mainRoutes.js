@@ -1,10 +1,13 @@
+import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation';
 
 
+import CustomIcon from '../src/CustomComponents/CustomIcon';
 import Modules from './modules';
-import HintsScreen from '../src/HintsScreen';
-import NewsScreen from '../src/NewsScreen';
-import CommunityScreen from '../src/CommunityScreen';
+import Hints from './hints';
+import News from './news';
+import Community from './community';
+import { Palette } from '../src/Styles';
 
 
 const TabNavigator = createBottomTabNavigator({
@@ -12,30 +15,35 @@ const TabNavigator = createBottomTabNavigator({
         screen: Modules,
         navigationOptions:{
             tabBarLabel: 'Módulos',
-            tabBarIcon: null //Mudar depois
+            tabBarIcon: ({focused})=>{return (focused)? <CustomIcon name="leaves" size={26} color={Palette.main} /> : <CustomIcon name="leaves" size={26} color='#cccccc' />}
         }
     },
-    HintsScreen:{
-        screen: HintsScreen,
+    Hints:{
+        screen: Hints,
         navigationOptions:{
             tabBarLabel: 'Dicas',
-            tabBarIcon: null //Mudar depois
+            tabBarIcon: ({focused})=>{return (focused)? <CustomIcon name="exclamation" size={26} color={Palette.main} /> : <CustomIcon name="exclamation" size={26} color='#cccccc' />}
         }
     },
-    NewsScreen:{
-        screen: NewsScreen,
+    News:{
+        screen: News,
         navigationOptions:{
             tabBarLabel: 'Notícias',
-            tabBarIcon: null //Mudar depois
+            tabBarIcon: ({focused})=>{return (focused)? <CustomIcon name="news" size={26} color={Palette.main} /> : <CustomIcon name="news" size={26} color='#cccccc' />}
         }
     },
-    CommunityScreen:{
-        screen: CommunityScreen,
+    Community:{
+        screen: Community,
         navigationOptions:{
             tabBarLabel: 'Comunidade',
-            tabBarIcon: null //Mudar depois
+            tabBarIcon: ({focused})=>{return (focused)? <CustomIcon name="community" size={26} color={Palette.main} /> : <CustomIcon name="community" size={26} color='#cccccc' />}
         }
     },
+}, {
+    tabBarOptions:{
+        showLabel: false,
+        style:{borderTopColor:'transparent'}
+    }
 });
 
 export default TabNavigator;

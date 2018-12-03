@@ -12,6 +12,7 @@ import { Palette } from '../src/Styles';
 
 import SignUp from '../src/SignUp';
 import Login from '../src/Login';
+import CustomIcon from '../src/CustomComponents/CustomIcon';
 import AddModule from '../src/AddModule'
 import Drawer from './drawer';
 
@@ -84,8 +85,8 @@ export const SignedInContainer = createAppContainer(SignedInRoutes);
 class Icon extends Component {
     render(){
         return (
-            <View style={{backgroundColor: Palette.main, height: height*0.07, alignItems:'center', justifyContent:'center'}}>
-                <Text style={{color:Palette.text, fontWeight:'bold'}}>Imagenzinha</Text>
+            <View style={{backgroundColor: Palette.main, height: height*0.07, alignItems:'center'}}>
+                <CustomIcon name="plant-io" size={40} color={Palette.text} />
             </View>
         );
     }
