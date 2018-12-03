@@ -6,7 +6,8 @@ const { width, height } = Dimensions.get('screen');
 /* --- COLOR THEME DEFINITION --- */
 
 
-let season;
+export let season;
+export let date;
 
 //Color themes:
 const Themes = {
@@ -34,7 +35,6 @@ const Themes = {
 
 //Seasons are set to south hemisphere only for now:
 const determineDateSeason = (parY, parM, parD)=>{
-    let date;
 
     if(typeof parY === 'undefined' && typeof parM === 'undefined' && typeof parD === 'undefined'){
         date = new Date(); //In case no parameters has been passed
@@ -302,9 +302,8 @@ let generalStyles = {
             justifyContent:'center',
             alignItems:'center'
         },
-        text:{
-            fontFamily: 'cabin',
-            fontSize: 50
+        modulesList:{
+            borderRadius: width*0.01
         }
     },
     hintsScreen:{

@@ -2,19 +2,41 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
-    Text
+    FlatList
 } from 'react-native';
 
+
 import generalStyles from './Styles';
+import ModuleCard from './CustomComponents/ModuleCard';
+import WeatherCard from './CustomComponents/WeatherCard';
+
 
 const styles = StyleSheet.create(generalStyles.modulesScreen);
 
+
 export default class ModulesScreen extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            list:[
+                {key:'1', name: 'Módulo 1'},
+                {key:'2', name: 'Xablauzinho'},
+                {key:'3', name: 'Modulozaço'},
+                {key:'4', name: 'Módulotron'},
+                {key:'5', name: 'Plant IO'},
+                {key:'6', name: 'Halala'}
+            ]
+        }
+    }
     
     render(){
         return (
             <View style={styles.container}>
-                <Text style={styles.text}>Módulos</Text>
+                <FlatList contentContainerStyle={styles.modulesList}
+                    data={this.state.list}
+                    renderItem={({item})=><ModuleCard data={item} />}
+                />
+                <WeatherCard />
             </View>
         );
     }
