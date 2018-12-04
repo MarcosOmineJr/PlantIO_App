@@ -301,9 +301,6 @@ let generalStyles = {
             flex:1,
             justifyContent:'center',
             alignItems:'center'
-        },
-        modulesList:{
-            borderRadius: width*0.01
         }
     },
     moduleScreen:{

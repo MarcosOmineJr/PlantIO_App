@@ -40,7 +40,7 @@ export default class ModulesScreen extends Component {
         return (
             <View style={styles.container}>
                 <StatusBar hidden />
-                <FlatList contentContainerStyle={styles.modulesList}
+                <FlatList
                     data={this.state.list}
                     renderItem={({item})=><TouchableModuleCard data={item} weather={this.state.weather} navigation={this.props.navigation} />}
                 />
