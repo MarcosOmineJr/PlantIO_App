@@ -18,12 +18,8 @@ export default class WeatherCard extends Component {
 
     constructor(props){
         super(props);
-        this.state = {
-            previsao:{
-                min: '10',
-                max: '20',
-                icon: '2rn'
-            }
+        this.state={
+
         }
         this.month = ['NOV', 'DEZ', 'JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ', 'JAN', 'FEV'];
         this.today = date;
@@ -66,11 +62,11 @@ export default class WeatherCard extends Component {
                             <Text style={styles.weatherDay}>Hoje</Text>
                         </View>
                         <View style={styles.weatherIconContainer}>
-                            <CustomIcon name={this.state.previsao.icon} size={35} color={Palette.text} />
+                            <CustomIcon name={this.props.weather.icon} size={35} color={Palette.text} />
                         </View>
                         <View style={styles.minMaxTemperatureContainer}>
-                            <Text style={styles.minTemperature}>{this.state.previsao.min}º</Text>
-                            <Text style={styles.maxTemperature}>{this.state.previsao.max}º</Text>
+                            <Text style={styles.minTemperature}>{this.props.weather.min}º</Text>
+                            <Text style={styles.maxTemperature}>{this.props.weather.max}º</Text>
                         </View>
                     </View>
                 </View>
@@ -161,7 +157,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        paddingHorizontal: width*0.05
+        paddingLeft: width*0.05
     },
     circleOutline:{
         justifyContent: 'center',

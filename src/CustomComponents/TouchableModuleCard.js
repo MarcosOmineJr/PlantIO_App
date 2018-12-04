@@ -6,23 +6,23 @@ import {
     View,
     TouchableHighlight
 } from 'react-native';
-import { Feather } from '@expo/vector-icons';
 
 
 import { Palette } from '../Styles';
+import CustomIcon from './CustomIcon';
 
 
 const { height, width } = Dimensions.get('screen');
 
 
-export default class ModuleCard extends Component {
+export default class TouchableModuleCard extends Component {
     render(){
         return (
-            <TouchableHighlight style={styles.btn} underlayColor={Palette.accent()} onPress={()=>this.props.navigation.navigate('ModuleScreen', {name: this.props.data.name})}>
+            <TouchableHighlight style={styles.btn} underlayColor={Palette.accent()} onPress={()=>this.props.navigation.navigate('ModuleScreen', {module: this.props.data, weather: this.props.weather})}>
                 <View style={styles.container}>
                     <Text style={styles.moduleName}>{this.props.data.name}</Text>
-                    <TouchableHighlight style={styles.configBtn} underlayColor={Palette.accent(0.3)} onPress={()=>this.props.navigation.navigate('ModuleConfig', {name: this.props.data.name})} >
-                        <Feather name="more-vertical" size={30} color={Palette.text} />
+                    <TouchableHighlight style={styles.configBtn} underlayColor={Palette.accent(0.3)} onPress={()=>this.props.navigation.navigate('ModuleConfig', {name: this.props.data})} >
+                        <CustomIcon name="three-dot" size={26} color={Palette.text} />
                     </TouchableHighlight>
                 </View>
             </TouchableHighlight>

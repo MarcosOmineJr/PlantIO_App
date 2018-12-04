@@ -310,11 +310,38 @@ let generalStyles = {
         container:{
             flex:1,
             justifyContent:'center',
-            alignItems:'center'
+            alignItems: 'center'
         },
-        text:{
-            fontFamily: 'cabin',
-            fontSize: 50
+        moduleInfo:{
+            width: '100%',
+            flex: 3
+        },
+        sensors:{
+            flex: 1,
+            flexDirection: 'row',
+            paddingHorizontal: width*0.05,
+            justifyContent: 'space-between'
+        },
+        weatherIcon:{
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: width*0.2,
+            height: height*0.07,
+            backgroundColor: Palette.main,
+            borderRadius: width*0.01
+        },
+        moduleCard:{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+        iconSelectors:{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'row',
+            paddingHorizontal: width*0.05,
+            justifyContent: 'space-between',
         }
     },
     hintsScreen:{

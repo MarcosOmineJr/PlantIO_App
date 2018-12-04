@@ -30,9 +30,9 @@ export default class ModuleConfig extends Component {
                         <TextInput style={styles.normalInput} underlineColorAndroid='transparent' />
                     </View>
                     <View style={styles.horizontalView}>
-                        <IconSelectorButton navigation={this.props.navigation} onPress={()=>this.props.navigation.navigate('IconPicker')} />
-                        <IconSelectorButton navigation={this.props.navigation} onPress={()=>this.props.navigation.navigate('IconPicker')} />
-                        <IconSelectorButton navigation={this.props.navigation} onPress={()=>this.props.navigation.navigate('IconPicker')} />
+                        <IconSelectorButton navigation={this.props.navigation} tintColor={ Palette.main } bgColor={ Palette.accent() } underlayColor={ Palette.accent(0.3) } onPress={()=>this.props.navigation.navigate('IconPicker')} />
+                        <IconSelectorButton navigation={this.props.navigation} tintColor={ Palette.main } bgColor={ Palette.accent() } underlayColor={ Palette.accent(0.3) } onPress={()=>this.props.navigation.navigate('IconPicker')} />
+                        <IconSelectorButton navigation={this.props.navigation} tintColor={ Palette.main } bgColor={ Palette.accent() } underlayColor={ Palette.accent(0.3) } onPress={()=>this.props.navigation.navigate('IconPicker')} />
                     </View>
                     <View style={[styles.horizontalView, { paddingTop: height*0.03 }]}>
                         <TouchableHighlight style={styles.backButton} onPress={()=>this.props.navigation.goBack()}>
