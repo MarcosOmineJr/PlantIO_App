@@ -27,7 +27,7 @@ export default class LateralMenu extends Component {
                 </View>
                 <View style={styles.userContainer}>
                     <Text style={styles.username}>Usuário</Text>
-                    <TouchableHighlight style={styles.logOutBtn} onPress={()=>onSignOut().then(this.props.navigation.navigate('SignedOut'))}>
+                    <TouchableHighlight style={styles.logOutBtn} onPress={()=>{this.props.navigation.closeDrawer; onSignOut().then(this.props.navigation.navigate('SignedOut'))}}>
                         <Text style={styles.logOutBtnText}>Desconectar</Text>
                     </TouchableHighlight>
                 </View>
