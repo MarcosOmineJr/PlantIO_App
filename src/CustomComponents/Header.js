@@ -6,7 +6,6 @@ import {
     TouchableHighlight,
     Text
 } from 'react-native';
-import { Feather } from '@expo/vector-icons';
 
 
 import { Palette } from '../Styles';
@@ -21,7 +20,7 @@ class HeaderLeft extends Component {
     render(){
         return (
             <TouchableHighlight style={styles.HLBtn} onPress={()=>this.props.navigation.openDrawer()}>
-                <Feather name='menu' size={30} color={Palette.main} />
+                <CustomIcon name='menu' size={26} color={Palette.main} />
             </TouchableHighlight>
         );
     }
@@ -36,7 +35,7 @@ class HeaderTitle extends Component {
                     <Text style={styles.HTTxt}>{this.props.title}</Text>
                 </View>
                 <View style={styles.HTIconContainer}>
-                    <CustomIcon name="plant-io" size={40} color={Palette.main} />
+                    <CustomIcon name="deco-top" size={45} color={Palette.main} />
                 </View>
                 <View style={styles.HTFillerContainer}></View>
             </View>
@@ -49,7 +48,7 @@ class HeaderRight extends Component {
     render(){
         return (
             <TouchableHighlight style={styles.HRBtn} onPress={()=>this.props.navigation.navigate('AddScreen')}>
-                <Feather name='plus' size={30} color={Palette.main} />
+                <CustomIcon name='plus' size={26} color={Palette.main} />
             </TouchableHighlight>
         );
     }
@@ -86,7 +85,6 @@ const styles = StyleSheet.create({
     },
     HTTitleContainer:{
         flex: 1,
-        paddingTop:25,
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -113,10 +111,9 @@ const styles = StyleSheet.create({
     HContainer:{
         flexDirection: 'row',
         width: width,
-        height: height*0.12,
+        height: height*0.08,
     },
     headerLeft:{
-        paddingTop:25,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
@@ -125,7 +122,6 @@ const styles = StyleSheet.create({
         flex: 6
     },
     headerRight:{
-        paddingTop:25,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'

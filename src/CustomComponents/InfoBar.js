@@ -6,10 +6,10 @@ import {
     Text,
     TouchableHighlight
 } from 'react-native';
-import { Entypo } from '@expo/vector-icons';
 
 
 import { Palette } from '../Styles';
+import CustomIcon from './CustomIcon';
 
 
 const { width, height } = Dimensions.get('screen');
@@ -21,8 +21,8 @@ export default class InfoBar extends Component {
             return (
                 <View style={styles.container}>
                     <View style={styles.infoBarLeft}>
-                        <TouchableHighlight underlayColor={Palette.main} onPress={()=>(typeof this.props.backRoute !== 'undefined')? this.props.navigation.navigate(this.props.backRoute) : this.props.navigation.goBack()} >
-                            <Entypo name="chevron-left" size={30} color={Palette.text} />
+                        <TouchableHighlight style={styles.backBtnContainer} underlayColor={Palette.main} onPress={()=>(typeof this.props.backRoute !== 'undefined')? this.props.navigation.navigate(this.props.backRoute) : this.props.navigation.goBack()} >
+                            <CustomIcon name="arrow-left" size={26} color={Palette.text} />
                         </TouchableHighlight>
                     </View>
                     <View style={styles.infoBarText}>
@@ -49,13 +49,18 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        height: height*0.07,
+        height: height*0.06,
         backgroundColor: Palette.accent()
     },
     infoBarLeft:{
         flex:1,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    backBtnContainer:{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     infoBarText:{
         flex:3,

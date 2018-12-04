@@ -4,6 +4,8 @@ import { AsyncSetup } from './src/boot/AsyncSetup';
 
 export default class App extends Component {
   render() {
-    return <AsyncSetup /> //Calls setup first
+
+    //Calls Setup:
+    return <AsyncSetup />
   }
 }

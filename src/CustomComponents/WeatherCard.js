@@ -22,7 +22,7 @@ export default class WeatherCard extends Component {
             previsao:{
                 min: '10',
                 max: '20',
-                icon: 'moon-cloudy'
+                icon: '2rn'
             }
         }
         this.month = ['NOV', 'DEZ', 'JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ', 'JAN', 'FEV'];

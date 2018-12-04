@@ -13,7 +13,7 @@ export default class EmptyGreenHeader extends Component {
     render(){
         return (
             <View style={{backgroundColor: Palette.main, height: height*0.07, alignItems:'center'}}>
-                <CustomIcon name="plant-io" size={40} color={Palette.text} />
+                <CustomIcon name="deco-top" size={45} color={Palette.text} />
             </View>
         );
     }

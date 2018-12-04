@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
     StyleSheet,
+    StatusBar,
     View,
     FlatList
 } from 'react-native';
@@ -33,6 +34,7 @@ export default class ModulesScreen extends Component {
     render(){
         return (
             <View style={styles.container}>
+                <StatusBar hidden />
                 <FlatList contentContainerStyle={styles.modulesList}
                     data={this.state.list}
                     renderItem={({item})=><ModuleCard data={item} navigation={this.props.navigation} />}
