@@ -22,6 +22,8 @@ export default class HintCard extends Component {
         super(props);
         this.state={
             btnBG: new Animated.Value(0),
+            btnBorderL: new Animated.Value(width*0.01),
+            btnBorderR: new Animated.Value(width*0.01),
             collapsed: this.props.collapsed
         }
         this.open = this.open.bind(this);
@@ -30,23 +32,59 @@ export default class HintCard extends Component {
     }
 
     open(){
-        Animated.timing(
-            this.state.btnBG,
-            {
-                toValue:1,
-                duration:500
-            }
-        ).start();
+        Animated.parallel([
+
+            Animated.timing(
+                this.state.btnBG,
+                {
+                    toValue:1,
+                    duration:500
+                }
+            ),
+            Animated.timing(
+                this.state.btnBorderL,
+                {
+                    toValue:0,
+                    duration:500
+                }
+            ),
+            Animated.timing(
+                this.state.btnBorderR,
+                {
+                    toValue:0,
+                    duration:500
+                }
+            )
+    
+        ]).start();
     }
 
     close(){
-        Animated.timing(
-            this.state.btnBG,
-            {
-                toValue:0,
-                duration:500
-            }
-        ).start();
+        Animated.parallel([
+
+            Animated.timing(
+                this.state.btnBG,
+                {
+                    toValue:0,
+                    duration:500
+                }
+            ),
+            Animated.timing(
+                this.state.btnBorderL,
+                {
+                    toValue: width*0.01,
+                    duration:500
+                }
+            ),
+            Animated.timing(
+                this.state.btnBorderR,
+                {
+                    toValue: width*0.01,
+                    duration:500
+                }
+            )
+    
+        ]).start();
     }
 
     pressed(){
@@ -76,7 +114,7 @@ export default class HintCard extends Component {
 
         return(
             <View style={styles.container}>
-                <AnimatedButton underlayColor={(this.state.collapsed)? Palette.main : Palette.accent() } style={{...styles.btn, backgroundColor: btnBG}} onPress={this.pressed}>
+                <AnimatedButton underlayColor={(this.state.collapsed)? Palette.main : Palette.accent() } style={{...styles.btn, backgroundColor: btnBG, borderBottomLeftRadius: this.state.btnBorderL, borderBottomRightRadius: this.state.btnBorderR}} onPress={this.pressed}>
                     <Text style={styles.title}>{this.props.data.title}</Text>
                 </AnimatedButton>
                 <Collapsible style={styles.txtContainer} collapsed={this.state.collapsed}>
@@ -102,7 +140,8 @@ const styles = StyleSheet.create({
         width: '100%',
         paddingHorizontal: width*0.07,
         justifyContent: 'center',
-        borderRadius: width*0.01,
+        borderTopLeftRadius: width*0.01,
+        borderTopRightRadius: width*0.01,
         zIndex: 2
     },
     title:{

@@ -3,7 +3,8 @@ import {
     StyleSheet,
     Dimensions,
     View,
-    Text
+    Text,
+    AsyncStorage
 } from 'react-native';
 
 
@@ -19,12 +20,29 @@ export default class WeatherCard extends Component {
     constructor(props){
         super(props);
         this.state={
-
+            weather:{
+                temperature:{
+                    min:'0',
+                    max:'0'
+                },
+                text_icon:{
+                    icon:{
+                        afternoon:'plant-io',
+                        dawn:'plant-io',
+                        day:'plant-io',
+                        morning:'plant-io',
+                        night:'plant-io'
+                    }
+                }
+            },
+            time: new Date(),
+            refreshing:this.props.refreshing,
         }
         this.month = ['NOV', 'DEZ', 'JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ', 'JAN', 'FEV'];
-        this.today = date;
         this.season = season;
         this.seasonPT = this.translateSeason();
+
+        this.getWeatherData = this.getWeatherData.bind(this);
     }
 
     translateSeason(){
@@ -46,15 +64,38 @@ export default class WeatherCard extends Component {
             return temp;
     }
 
+    async getWeatherData(){
+        let w = await AsyncStorage.getItem('WEATHER_INFO');
+        let parsedW = JSON.parse(w);
+        let s = this.state;
+        s.weather = parsedW.data[0];
+        this.setState(s);
+    }
+
+    componentDidMount(){
+        this.getWeatherData();
+    }
+
     render(){
+        let weatherIcon;
+        if(this.state.time.getHours() >= 4 && this.state.time.getHours() < 6){
+            weatherIcon = this.state.weather.text_icon.icon.dawn
+        } else if(this.state.time.getHours() >= 6 && this.state.time.getHours() < 12){
+            weatherIcon = this.state.weather.text_icon.icon.morning
+        } else if(this.state.time.getHours() >= 12 && this.state.time.getHours() < 18){
+            weatherIcon = this.state.weather.text_icon.icon.afternoon
+        } else {
+            weatherIcon = this.state.weather.text_icon.icon.night
+        }
+        
         return (
             <View style={styles.container}>
                 <View style={styles.month}>
-                    <Text style={styles.monthTxtInactive}>{this.month[this.today.getMonth()]}</Text>
-                    <Text style={styles.monthTxtInactive}>{this.month[this.today.getMonth()+1]}</Text>
-                    <Text style={styles.monthTxtActive}>{this.month[this.today.getMonth()+2]}</Text>
-                    <Text style={styles.monthTxtInactive}>{this.month[this.today.getMonth()+3]}</Text>
-                    <Text style={styles.monthTxtInactive}>{this.month[this.today.getMonth()+4]}</Text>
+                    <Text style={styles.monthTxtInactive}>{this.month[this.state.time.getMonth()]}</Text>
+                    <Text style={styles.monthTxtInactive}>{this.month[this.state.time.getMonth()+1]}</Text>
+                    <Text style={styles.monthTxtActive}>{this.month[this.state.time.getMonth()+2]}</Text>
+                    <Text style={styles.monthTxtInactive}>{this.month[this.state.time.getMonth()+3]}</Text>
+                    <Text style={styles.monthTxtInactive}>{this.month[this.state.time.getMonth()+4]}</Text>
                 </View>
                 <View style={styles.weather}>
                     <View style={styles.weatherCard}>
@@ -62,11 +103,11 @@ export default class WeatherCard extends Component {
                             <Text style={styles.weatherDay}>Hoje</Text>
                         </View>
                         <View style={styles.weatherIconContainer}>
-                            <CustomIcon name={this.props.weather.icon} size={35} color={Palette.text} />
+                            <CustomIcon name={weatherIcon} size={35} color={Palette.text} />
                         </View>
                         <View style={styles.minMaxTemperatureContainer}>
-                            <Text style={styles.minTemperature}>{this.props.weather.min}º</Text>
-                            <Text style={styles.maxTemperature}>{this.props.weather.max}º</Text>
+                            <Text style={styles.minTemperature}>{this.state.weather.temperature.min}º</Text>
+                            <Text style={styles.maxTemperature}>{this.state.weather.temperature.max}º</Text>
                         </View>
                     </View>
                 </View>
