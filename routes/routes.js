@@ -9,6 +9,7 @@ import AddModule from '../src/AddModule'
 import Drawer from './drawer';
 import ModuleConfig from '../src/CustomComponents/ModuleConfig';
 import IconPicker from '../src/CustomComponents/IconPicker';
+import NewsWebView from '../src/CustomComponents/NewsWebView';
 
 
 //Routes in case the user is logged out:
@@ -51,6 +52,9 @@ const SignedInRoutes = createStackNavigator({
         navigationOptions:{
             header: ()=>{return <EmptyGreenHeader />}
         }
+    },
+    NewsView:{
+        screen:NewsWebView
     }
 },
 {

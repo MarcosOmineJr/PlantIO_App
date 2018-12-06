@@ -3,12 +3,12 @@ import {
     StyleSheet,
     Dimensions,
     View,
-    Text,
-    AsyncStorage
+    Text
 } from 'react-native';
 
 
-import { Palette, date, season } from '../Styles';
+import { Palette, season } from '../Styles';
+import { getDataFromAsyncStorage } from '../services/Fetch';
 import CustomIcon from './CustomIcon';
 
 
@@ -37,6 +37,7 @@ export default class WeatherCard extends Component {
             },
             time: new Date(),
             refreshing:this.props.refreshing,
+            ready:false
         }
         this.month = ['NOV', 'DEZ', 'JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ', 'JAN', 'FEV'];
         this.season = season;
@@ -65,10 +66,10 @@ export default class WeatherCard extends Component {
     }
 
     async getWeatherData(){
-        let w = await AsyncStorage.getItem('WEATHER_INFO');
-        let parsedW = JSON.parse(w);
+        let weather = await getDataFromAsyncStorage('WEATHER_INFO');
         let s = this.state;
-        s.weather = parsedW.data[0];
+        s.weather = weather.data[0];
+        s.ready = true;
         this.setState(s);
     }
 
@@ -88,6 +89,10 @@ export default class WeatherCard extends Component {
             weatherIcon = this.state.weather.text_icon.icon.night
         }
         
+        if(!this.state.ready){
+            return null;
+        }
+
         return (
             <View style={styles.container}>
                 <View style={styles.month}>

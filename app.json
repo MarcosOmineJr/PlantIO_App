@@ -1,18 +1,18 @@
 {
   "expo": {
-    "name": "PlantIO_App",
-    "slug": "PlantIO_App",
+    "name": "Plant IO",
+    "slug": "Plant-IO",
     "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": [
       "ios",
       "android"
     ],
-    "version": "1.0.0",
+    "version": "0.5.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/app_icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/loading1.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

@@ -16,12 +16,13 @@ const { height, width } = Dimensions.get('screen');
 
 
 export default class TouchableModuleCard extends Component {
+
     render(){
         return (
-            <TouchableHighlight style={styles.btn} underlayColor={Palette.accent()} onPress={()=>this.props.navigation.navigate('ModuleScreen', {module: this.props.data, weather: this.props.weather})}>
+            <TouchableHighlight style={styles.btn} underlayColor={Palette.accent()} onPress={()=>this.props.navigation.navigate('ModuleScreen', {module: this.props.data})}>
                 <View style={styles.container}>
                     <Text style={styles.moduleName}>{this.props.data.name}</Text>
-                    <TouchableHighlight style={styles.configBtn} underlayColor={Palette.accent(0.3)} onPress={()=>this.props.navigation.navigate('ModuleConfig', {name: this.props.data})} >
+                    <TouchableHighlight style={styles.configBtn} underlayColor={Palette.accent(0.3)} onPress={()=>this.props.navigation.navigate('ModuleConfig', {module: this.props.data})} >
                         <CustomIcon name="three-dot" size={26} color={Palette.text} />
                     </TouchableHighlight>
                 </View>

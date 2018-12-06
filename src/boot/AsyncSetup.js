@@ -4,6 +4,7 @@ import * as Expo from 'expo';
 
 import { createRootNavigator, SignedInContainer, SignedOutContainer } from '../../routes/routes';
 import { checkSession } from '../services/Auth';
+import { fetchDataFromClimatempoAPI, fetchDataFromPlantIOAPI } from '../services/Fetch';
 
 
 export class AsyncSetup extends Component {
@@ -15,6 +16,7 @@ export class AsyncSetup extends Component {
             isReady:false //Begins by showing the loading screen
         };
     }
+
 
     //Load the custom fonts:
     async loadApp(){
@@ -30,6 +32,10 @@ export class AsyncSetup extends Component {
         checkSession()
             .then((r)=>{let s = this.state; s.signed = r; this.setState(s);})
             .catch((error)=>alert(error));
+
+        //Fetch Modules List from the Plant IO API and stores in AsyncStorage to be used all over the app:
+        await fetchDataFromPlantIOAPI();
+        await fetchDataFromClimatempoAPI();
 
         //When everything is loaded, set isReady to true, thus, redirecting the app to the main routes:
         let s = this.state;

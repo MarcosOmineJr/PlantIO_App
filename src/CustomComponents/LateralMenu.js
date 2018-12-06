@@ -4,7 +4,8 @@ import {
     Dimensions,
     View,
     TouchableHighlight,
-    Text
+    Text,
+    AsyncStorage
 } from 'react-native';
 
 
@@ -12,12 +13,60 @@ import { Palette } from '../Styles';
 import { onSignOut } from '../services/Auth';
 import CustomIcon from './CustomIcon';
 import CustomSwitch from './CustomSwitch';
+import { getDataFromAsyncStorage, convertFetchedDataFromPlantIOAPI, fetchDataFromPlantIOAPI } from '../services/Fetch';
 
 
 const { width, height } = Dimensions.get('screen');
 
+
 export default class LateralMenu extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            loaded: false,
+            activated:[false, false],
+            auto:0,
+            user: ''
+        }
+
+        this.getMode = this.getMode.bind(this);
+    }
+
+    async getMode(){
+        let pIOData = await getDataFromAsyncStorage('PLANT_IO_DATA');
+        let s = this.state;
+        s.auto = convertFetchedDataFromPlantIOAPI(pIOData.auto, 'boolean');
+        s.user = pIOData.email;
+        if(this.state.auto){
+            s.activated[0] = true;
+        } else {
+            s.activated[0] = false;
+        }
+        s.loaded = true;
+        this.setState(s);
+    }
+
+    async toggleAuto(v){
+        let pIOData = await getDataFromAsyncStorage('PLANT_IO_DATA');
+        pIOData.auto = v;
+        await AsyncStorage.setItem('PLANT_IO_DATA', JSON.stringify(pIOData));
+
+    }
+
+    async getModeToSet(){
+        let pIOData = await getDataFromAsyncStorage('PLANT_IO_DATA');
+        let auto = convertFetchedDataFromPlantIOAPI(pIOData.auto, 'boolean');
+        return auto;
+    }
+
+    componentDidMount(){
+        this.getMode();
+    }
+
     render(){
+        if(!this.state.loaded){
+            return null;
+        }
         return (
             <View style={styles.menuContentContainer}>
                 <View style={styles.closeBtnContainer}>
@@ -26,7 +75,7 @@ export default class LateralMenu extends Component {
                     </TouchableHighlight>
                 </View>
                 <View style={styles.userContainer}>
-                    <Text style={styles.username}>Usuário</Text>
+                    <Text ellipsizeMode='tail' numberOfLines={1} style={styles.username}>{this.state.user}</Text>
                     <TouchableHighlight style={styles.logOutBtn} onPress={()=>{this.props.navigation.closeDrawer; onSignOut().then(this.props.navigation.navigate('SignedOut'))}}>
                         <Text style={styles.logOutBtnText}>Desconectar</Text>
                     </TouchableHighlight>
@@ -34,11 +83,11 @@ export default class LateralMenu extends Component {
                 <View style={styles.menuButtonsContainer}>
                     <View style={[styles.menuButton, { marginBottom: height*0.05 }]}>
                         <Text style={styles.menuButtonText}>Modo Automático</Text>
-                        <CustomSwitch onPress={()=>{}} />
+                        <CustomSwitch active={this.state.activated[0]} onPress={()=>this.getModeToSet().then((auto)=>(!auto)? this.toggleAuto(true) : this.toggleAuto(false))} />
                     </View>
                     <View style={styles.menuButton}>
                         <Text style={styles.menuButtonText}>Notificações por e-mail</Text>
-                        <CustomSwitch onPress={()=>{}} />
+                        <CustomSwitch active={this.state.activated[1]} onPress={()=>{}} />
                     </View>
                 </View>
                 <View style={styles.footerContainer}>
@@ -80,7 +129,8 @@ const styles = StyleSheet.create({
     username:{
         color: Palette.text,
         fontFamily: 'comfortaa',
-        fontSize: 30
+        fontSize: 27,
+        width:width*0.5
     },
     logOutBtnText:{
         color: Palette.main,

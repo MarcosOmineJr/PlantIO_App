@@ -8,6 +8,8 @@ import {
 
 
 import { Palette, season } from '../Styles';
+import AutomaticModeStatusBar from './AutomaticModeStatusBar';
+import { convertFetchedDataFromPlantIOAPI } from '../services/Fetch';
 import RoundButton from './RoundButton';
 
 
@@ -18,10 +20,12 @@ export default class ModuleActionsCard extends Component {
     constructor(props){
         super(props);
         this.state = {
-            light: this.props.data.light,
-            soil: this.props.data.soil
+            light: convertFetchedDataFromPlantIOAPI(this.props.data.isLedsOn, 'boolean'),
+            soil: convertFetchedDataFromPlantIOAPI(this.props.data.isPumpOn, 'boolean'),
+            auto: convertFetchedDataFromPlantIOAPI(this.props.auto, 'boolean')
         }
     }
+
     render(){
 
         let seasonPT;
@@ -41,6 +45,28 @@ export default class ModuleActionsCard extends Component {
                 break;
         }
 
+        if(this.state.auto){
+            return (
+                <View style={styles.container}>
+                    <View style={styles.indicators}>
+                        <View style={styles.indicatorsContainer}>
+                            <TextIndicator label='Iluminação' active={this.state.light} />
+                            <TextIndicator label='Solo' active={this.state.soil} />
+                        </View>
+                    </View>
+                    <View style={{...styles.buttons, flexDirection: 'column'}}>
+                        <AutomaticModeStatusBar text='Luz Ligada' active={this.state.light} />
+                        <AutomaticModeStatusBar text='Irrigando o Solo' active={this.state.soil} />
+                    </View>
+                    <View style={styles.season}>
+                        <View style={styles.circleOutline}>
+                            <View style={styles.circleInline}></View>
+                        </View>
+                        <Text style={styles.seasonTxt}>{seasonPT}</Text>
+                    </View>
+                </View>
+            );
+        }
         return (
             <View style={styles.container}>
                 <View style={styles.indicators}>

@@ -19,8 +19,8 @@ export default class UntouchableModuleCard extends Component {
     render(){
         return (
             <View style={styles.container}>
-                <Text style={styles.moduleName}>{this.props.item.name}</Text>
-                <TouchableHighlight style={styles.configBtn} underlayColor={Palette.accent(0.3)} onPress={()=>this.props.navigation.navigate('ModuleConfig', {module: this.props.item})} >
+                <Text style={styles.moduleName}>{this.props.data.name}</Text>
+                <TouchableHighlight style={styles.configBtn} underlayColor={Palette.accent(0.3)} onPress={()=>this.props.navigation.navigate('ModuleConfig', {module: this.props.data})} >
                     <CustomIcon name="three-dot" size={26} color={Palette.text} />
                 </TouchableHighlight>
             </View>

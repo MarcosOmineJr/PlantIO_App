@@ -18,11 +18,11 @@ export default class CustomSwitch extends Component {
     constructor(props){
         super(props);
         this.state={
-            active: false,
-            circleMovement: new Animated.Value(height*0.006),
-            outsideColor: new Animated.Value(0),
-            innerColor: new Animated.Value(0),
-            circleColor: new Animated.Value(0)
+            active: this.props.active,
+            circleMovement: new Animated.Value((this.props.active)? height*0.04 : height*0.006),
+            outsideColor: new Animated.Value((this.props.active)? 1 : 0),
+            innerColor: new Animated.Value((this.props.active)? 1 : 0),
+            circleColor: new Animated.Value((this.props.active)? 1 : 0)
         }
         this.activate =this.activate.bind(this);
         this.deactivate =this.deactivate.bind(this);
@@ -106,17 +106,16 @@ export default class CustomSwitch extends Component {
     }
 
     pressed(){
+        let s = this.state;
         if(this.state.active){
-            let s = this.state;
             s.active = false;
-            this.setState(s);
             this.deactivate();
+            this.setState(s);
             this.props.onPress();
         } else {
-            let s = this.state;
             s.active = true;
-            this.setState({active: true});
             this.activate();
+            this.setState(s);
             this.props.onPress();
         }
     }

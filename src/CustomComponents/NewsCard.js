@@ -19,7 +19,7 @@ export default class NewsCard extends Component {
     render(){
         let date = new Date(this.props.data.publishedAt);
         return (
-            <TouchableHighlight style={styles.container}>
+            <TouchableHighlight style={styles.container} onPress={()=>this.props.navigation.navigate('NewsView', {url: this.props.data.url})}>
                 <View style={styles.content}>
                     <ScaledImage style={styles.image} width={width*0.8} uri={this.props.data.urlToImage} />
                     <View style={styles.tituloContainer}>
